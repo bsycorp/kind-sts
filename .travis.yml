@@ -4,11 +4,7 @@ language: minimal
 env:
   - KUBERNETES_VERSION="v1.16.13" DOCKER_IMAGE_TAG="latest-1.16" MINIKUBE_VERSION="v1.2.0"
 script:
-  - |
-  git clone https://github.com/bsycorp/kind
-  cd kind
-  export MINIKUBE_EXTRA_ARGS=$(cat extra-args)
-  ./build.sh bsycorp/kind-sts:$DOCKER_IMAGE_TAG bsycorp/kind-sts:$KUBERNETES_VERSION
+  - bash ./build.sh
 deploy:
   provider: script
   script: bash ./deploy.sh
